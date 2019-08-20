@@ -1,0 +1,27 @@
+github:
+  org: apache
+  repo: hadoop
+
+contributors:
+  user:
+    - user1
+
+source:
+  githubpr:
+    label: ozone
+
+persistence:
+  type: dir
+  path: cache
+
+actions:
+  #  print:
+  #    type: stdout
+  build:
+    command: ./build.sh org={{.org}} -p repo={{.repo}} -p branch={{.ref}} -p update-github-status=false --generate-name=pr-{{.ref | tolower }}
+    dryrun: true
+    rerun: true
+    label: ozone
+  label:
+    type: label
+
